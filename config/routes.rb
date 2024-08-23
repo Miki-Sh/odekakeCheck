@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  get 'site/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # サイトのインデックスページにアクセスするルート
+  # get 'site/index'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # ルーティングDSL（Domain-Specific Language）に従ってアプリケーションのルートを定義します。
+  # 詳しくは https://guides.rubyonrails.org/routing.html を参照してください。
+
+  # /up にヘルスチェックのルートを公開し、アプリが例外なく起動している場合は200を返し、それ以外の場合は500を返します。
+  # ロードバランサーやアップタイムモニターがアプリの稼働状況を確認するために使用します。
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  root to: 'site#index'
 end
