@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   root to: 'site#index'
+
+  namespace :api do
+    resources :todos, only: %i[index show create destroy update]
+  end
 end
