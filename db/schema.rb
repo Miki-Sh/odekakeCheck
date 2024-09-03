@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_25_072527) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_28_172903) do
   create_table "todos", force: :cascade do |t|
     t.string "task", null: false
     t.boolean "is_completed", default: false, null: false
