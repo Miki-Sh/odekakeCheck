@@ -1,0 +1,107 @@
+/* reset ================================ */
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 100%;
+    font-family: 'BIZ UDPGothic', sans-serif;
+    line-height: 1.7;
+    letter-spacing: 1.5px;
+  }
+  
+  body {
+    margin: 0;
+    background-color: #f6faff;
+    color: #263D48;
+  }
+  
+  ul, li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  button {
+    /* display: block; */
+    text-decoration: none;
+    color: #2d3133;
+    font-size: 14px;
+  }
+  
+  button:hover {
+    transition: all 0.3s ease;
+  }
+  
+  
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+  
+  h1 {
+    font-weight: 600;
+  }
+  
+  input {
+    font-size: 100%;
+  }
+  
+  /* header ================================ */
+  header {
+    height: 56px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f0f4f9;
+  }
+  
+  .header-logo {
+    margin-left: 56px;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 56px;
+    color: #2cbb95;
+    display: inline;
+    cursor: pointer;
+  }
+  
+  .header-logo:hover {
+    color: #2488f7;
+  }
+  
+  /* container ================================ */
+  .container {
+    width: 80%;
+    min-width: 360px;
+    max-width: 720px;
+    margin: 0 auto;
+    margin-top: 56px;
+  }
+  
+  .container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .container-header .new-button {
+    background: #2488f7;
+    border-radius: 30px;
+    font-size: 28px;
+    width: 250px;
+    height: 55px;
+    line-height: 50px;
+    text-align: center;
+    color: #FEFEFE;
+    border: 3px solid #2488f7;
+    cursor: pointer;
+
+  }
+  .container-header .new-button:hover {
+    background-color: #FEFEFE;
+    color: #2488f7;
+    transition: all 0.3s ease;
+  }
+  
+  .container-header h1 {
+    font-size: 24px;
+  }

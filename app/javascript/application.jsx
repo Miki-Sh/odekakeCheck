@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import HelloMessage from './components/App';
+import App from './components/App';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+const root = createRoot(document.getElementById('root'));
 
 document.addEventListener('DOMContentLoaded', () => {
-  root.render(<HelloMessage name="World" />);
+  root.render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
 });
