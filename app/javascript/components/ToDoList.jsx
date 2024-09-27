@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../stylesheets/ToDoList.css'
+import axios from 'axios';
+import '../stylesheets/ToDoList.css';
 import ModalEdit from './ModalEdit';
 import ModalNew from './ModalNew';
 
@@ -9,24 +10,33 @@ const ToDoList = () => {
   const [newModalOpen, setNewModalOpen] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
 
-  // ローカルストレージからデータを読み込む
+  // APIからデータを取得する
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('todo')) || ['火の元を確認する','玄関の鍵を閉める'];
-    setTodoData(storedData);
+    const fetchTodos = async () => {
+      try {
+        const res = await axios.get('/api/todos');
+        setTodoData(res.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchTodos();
   }, []);
 
-  // 編集モーダルを開く
   const openEditModal = (index) => {
     setEditIndex(index);
     setModalOpen(true);
   };
 
-  // データを削除する
-  const deleteTodo = (index) => {
-    const updatedData = [...todoData];
-    updatedData.splice(index, 1);
-    setTodoData(updatedData);
-    localStorage.setItem('todo', JSON.stringify(updatedData));
+  const deleteTodo = async (index) => {
+    const todoId = todoData[index].id;
+    try {
+      await axios.delete(`/api/todos/${todoId}`);
+      const updatedData = todoData.filter((_, i) => i !== index);
+      setTodoData(updatedData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -46,10 +56,10 @@ const ToDoList = () => {
       </div>
       <ul className="table-body">
         {todoData.map((todo, index) => (
-          <li key={index}>
+          <li key={todo.id}>
             <div className='item-data'>
               <input type="checkbox" name="chk" />
-              <span className="name-column">{todo}</span>
+              <span className="name-column">{todo.task}</span>
             </div>
             <div className='item-menu'>
               <button className='edit-btn' onClick={() => openEditModal(index)}>編集</button>

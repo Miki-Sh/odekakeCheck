@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import '../stylesheets/NewEdit.css';
 
 const ModalEdit = (props) => {
   const { index, todoData, setTodoData, setModalOpen } = props;
+  const [updatedTask, setUpdatedTask] = useState(todoData[index].task);
 
-  const editTodo = () => {
-    const updatedData = [...todoData];
-    updatedData[index] = document.querySelector('.itemName').value;
-    setTodoData(updatedData);
-    localStorage.setItem('todo', JSON.stringify(updatedData));
-    setModalOpen(false);
+  const editTodo = async (e) => {
+    e.preventDefault();
+    if (!updatedTask.trim()) return; // 空のタスクを防止
+    const todoId = todoData[index].id;
+    try {
+      const res = await axios.put(`/api/todos/${todoId}`, { task: updatedTask });
+      const updatedData = [...todoData];
+      updatedData[index] = res.data;
+      setTodoData(updatedData);
+      setModalOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  return(
+  return (
     <div className='overlay' onClick={() => setModalOpen(false)}>
       <div className="container">
         <div className="item-form-wrapper" onClick={(e) => e.stopPropagation()}>
           <h1>おでかけチェックリスト編集</h1>
           <p className="form-label">↓に入力してください</p>
-          <form method="post">
-            <input type="text" defaultValue={todoData[index]} className="itemName" />
-            <input type="submit" value="更新する" onClick={editTodo} />
+          <form method="post" onSubmit={editTodo}>
+            <input
+              type="text"
+              value={updatedTask}
+              onChange={(e) => setUpdatedTask(e.target.value)}
+              className="itemName"
+            />
+            <input type="submit" value="更新する" />
           </form>
         </div>
         <button onClick={() => setModalOpen(false)} className="cancel-button">もどる</button>
