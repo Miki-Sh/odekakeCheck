@@ -1,0 +1,26 @@
+// フォーマットの詳細については、https://aka.ms/devcontainer.json を参照してください。
+// 設定オプションについては、次のREADMEを参照してください: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+{
+	"name": "おでかけチェックのDocker",
+	"build": {
+		// コンテナの実行コンテキストを .devcontainer フォルダーの1つ上に設定します。
+		"context": "..",
+		// 標準の 'Dockerfile' ファイル名を使用していない場合は、 'dockerFile' プロパティを更新してください。
+		"dockerfile": "../Dockerfile"
+	}
+
+	// 開発コンテナに追加する機能。詳細情報: https://containers.dev/features.
+	// "features": {},
+
+	// 'forwardPorts' を使用して、コンテナ内のポートのリストをローカルで利用可能にします。
+	// "forwardPorts": [],
+
+	// コンテナが作成された後にコマンドを実行するには、次の行のコメントを外してください。
+	// "postCreateCommand": "cat /etc/os-release",
+
+	// ツール固有のプロパティを設定します。
+	// "customizations": {},
+
+	// コンテナのデフォルト以外の既存のユーザーとして接続するには、コメントを外してください。詳細情報: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "devcontainer"
+}
