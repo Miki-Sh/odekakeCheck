@@ -1,23 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../stylesheets/style.css';
+import Header from './Header';
 import ToDoList from './ToDoList';
 import Uncheck from './Uncheck';
-import Introduction from './Introduction';
 
 const App = () => {
-  const [introOpen, setIntroOpen] = useState(false);
-  
   return(
   <>
-  <header>
-    <a className="header-logo" onClick={() => setIntroOpen(true)}>おでかけチェック</a>
-    { introOpen && <Introduction setIntroOpen={setIntroOpen} /> }
-  </header>
+  <Header />
   <div className="container">
     <ToDoList />
     <Uncheck />
   </div>
   </>
-)}
+)};
 
 export default App;

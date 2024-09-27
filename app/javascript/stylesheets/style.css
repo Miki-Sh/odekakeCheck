@@ -45,28 +45,7 @@
   input {
     font-size: 100%;
   }
-  
-  /* header ================================ */
-  header {
-    height: 56px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #f0f4f9;
-  }
-  
-  .header-logo {
-    margin-left: 56px;
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 56px;
-    color: #2cbb95;
-    display: inline;
-    cursor: pointer;
-  }
-  
-  .header-logo:hover {
-    color: #2488f7;
-  }
-  
+
   /* container ================================ */
   .container {
     width: 80%;
@@ -85,14 +64,13 @@
   
   .container-header .new-button {
     background: #2488f7;
+    border: 3px solid #2488f7;
     border-radius: 30px;
-    font-size: 28px;
     width: 250px;
     height: 55px;
-    line-height: 50px;
     text-align: center;
+    font-size: 28px;
     color: #FEFEFE;
-    border: 3px solid #2488f7;
     cursor: pointer;
 
   }

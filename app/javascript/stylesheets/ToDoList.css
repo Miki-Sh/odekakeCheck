@@ -54,11 +54,10 @@
 
 .edit-btn {
   font-size: 28px;
-  color: ##263D48;
+  color: #263D48;
   cursor: pointer;
   border: none;
   background: transparent;
-  
 }
 
 .edit-btn:hover {
