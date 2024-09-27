@@ -26,9 +26,6 @@ gem "stimulus-rails"
 # JSON API を簡単に構築 [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem "guard"
-gem "guard-minitest"
-
 # 本番環境で Action Cable を実行するために Redis アダプターを使用
 # gem "redis", ">= 4.0.1"
 
@@ -67,4 +64,10 @@ group :test do
   # システムテストを使用 [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "webdrivers"
+  gem "rails-controller-testing"
+  gem "minitest"
+  gem "minitest-reporters"
+  gem "guard"
+  gem "guard-minitest"
 end
