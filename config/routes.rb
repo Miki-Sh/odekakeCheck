@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'todos/new', to: 'site#index'
   get 'todos/:id', to: 'site#index'
   get 'todos/:id/edit', to: 'site#index'
-  get  "/signup",  to: "users#new"
+  get  'todos/signup',  to: "users#new"
 
   namespace :api do
     resources :todos, only: %i[index show create destroy update]
