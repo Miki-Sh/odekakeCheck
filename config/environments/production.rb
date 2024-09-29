@@ -1,97 +1,95 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+  # ここで指定された設定は config/application.rb の設定よりも優先されます。
 
-  # Code is not reloaded between requests.
+  # リクエスト間でコードはリロードされません。
   config.enable_reloading = false
 
-  # Eager load code on boot. This eager loads most of Rails and
-  # your application in memory, allowing both threaded web servers
-  # and those relying on copy on write to perform better.
-  # Rake tasks automatically ignore this option for performance.
+  # 起動時にコードをイーガーロードします。これにより、Railsやアプリケーションのほとんどがメモリにロードされ、
+  # スレッドベースのWebサーバーやコピーオンライトを利用するサーバーのパフォーマンスが向上します。
+  # Rake タスクはパフォーマンスのためにこのオプションを自動的に無視します。
   config.eager_load = true
 
-  # Full error reports are disabled and caching is turned on.
+  # エラーレポートを完全に無効にし、キャッシングを有効にします。
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
-  # Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
-  # key such as config/credentials/production.key. This key is used to decrypt credentials (and other encrypted files).
+  # マスターキーが ENV["RAILS_MASTER_KEY"]、config/master.key、または環境ごとのキー
+  # （例：config/credentials/production.key）で利用可能かを確認します。このキーは資格情報（および他の暗号化ファイル）を
+  # 復号化するために使用されます。
   # config.require_master_key = true
 
-  # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
+  # `public/` からの静的ファイルの提供を無効にし、代わりに NGINX/Apache に任せます。
   # config.public_file_server.enabled = false
 
-  # Compress CSS using a preprocessor.
+  # CSS をプリプロセッサで圧縮します。
   # config.assets.css_compressor = :sass
 
-  # Do not fall back to assets pipeline if a precompiled asset is missed.
+  # プリコンパイルされたアセットが見つからなかった場合、アセットパイプラインにフォールバックしません。
   config.assets.compile = false
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+  # アセットサーバーから画像、スタイルシート、JavaScript を提供する場合に有効にします。
   # config.asset_host = "http://assets.example.com"
 
-  # Specifies the header that your server uses for sending files.
-  # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
-  # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
+  # サーバーがファイルを送信するために使用するヘッダーを指定します。
+  # config.action_dispatch.x_sendfile_header = "X-Sendfile" # Apache 用
+  # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # NGINX 用
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
+  # アップロードされたファイルをローカルファイルシステムに保存します（オプションは config/storage.yml を参照）。
   config.active_storage.service = :local
 
-  # Mount Action Cable outside main process or domain.
+  # メインプロセスやドメインの外部に Action Cable をマウントします。
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
 
-  # Assume all access to the app is happening through a SSL-terminating reverse proxy.
-  # Can be used together with config.force_ssl for Strict-Transport-Security and secure cookies.
+  # すべてのアプリへのアクセスが SSL 終端プロキシ経由で行われると仮定します。
+  # config.force_ssl と一緒に使用すると、Strict-Transport-Security とセキュアクッキーに使用できます。
   # config.assume_ssl = true
 
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  # すべてのアプリへのアクセスを SSL 経由に強制し、Strict-Transport-Security を使用し、セキュアクッキーを使用します。
   config.force_ssl = true
 
-  # Log to STDOUT by default
+  # デフォルトで STDOUT にログを出力
   config.logger = ActiveSupport::Logger.new(STDOUT)
     .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
     .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
-  # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  # すべてのログ行の前に以下のタグを付加します。
+  config.log_tags = [:request_id]
 
-  # "info" includes generic and useful information about system operation, but avoids logging too much
-  # information to avoid inadvertent exposure of personally identifiable information (PII). If you
-  # want to log everything, set the level to "debug".
+  # "info" はシステム操作に関する一般的で有用な情報を含みますが、個人を特定できる情報（PII）の誤った公開を避けるために
+  # 過度な情報の記録を避けます。すべてを記録したい場合は、レベルを "debug" に設定してください。
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
-  # Use a different cache store in production.
+  # 本番環境で別のキャッシュストアを使用します。
   # config.cache_store = :mem_cache_store
 
-  # Use a real queuing backend for Active Job (and separate queues per environment).
+  # Active Job 用の実際のキューイングバックエンドを使用します（環境ごとにキューを分けます）。
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "odekake_check_production"
 
   config.action_mailer.perform_caching = false
 
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
+  # 無効なメールアドレスを無視し、メール配信エラーを報告しません。
+  # 即時配信エラーを報告するには、これを true に設定し、メールサーバーを構成してください。
   # config.action_mailer.raise_delivery_errors = false
 
-  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation cannot be found).
+  # I18n のフォールバックを有効にします（翻訳が見つからない場合、I18n.default_locale にフォールバックします）。
   config.i18n.fallbacks = true
 
-  # Don't log any deprecations.
+  # 非推奨事項のログは行いません。
   config.active_support.report_deprecations = false
 
-  # Do not dump schema after migrations.
+  # マイグレーション後にスキーマをダンプしません。
   config.active_record.dump_schema_after_migration = false
 
-  # Enable DNS rebinding protection and other `Host` header attacks.
+  # DNS リバインディング保護と他の `Host` ヘッダー攻撃を有効にします。
   # config.hosts = [
-  #   "example.com",     # Allow requests from example.com
-  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
+  #   "example.com",     # example.com からのリクエストを許可
+  #   /.*\.example\.com/ # `www.example.com` のようなサブドメインからのリクエストを許可
   # ]
-  # Skip DNS rebinding protection for the default health check endpoint.
+  # デフォルトのヘルスチェックエンドポイントのために DNS リバインディング保護をスキップします。
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end
