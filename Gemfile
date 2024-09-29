@@ -33,7 +33,7 @@ gem "jbuilder"
 # gem "kredis"
 
 # Active Model has_secure_password を使用 [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Windows は zoneinfo ファイルを含まないため、tzinfo-data gem をバンドル
 gem "tzinfo-data", platforms: %i[ windows jruby ]
