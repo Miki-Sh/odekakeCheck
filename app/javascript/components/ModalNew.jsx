@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../stylesheets/NewEdit.css';
+import '../stylesheets/Modal.css';
 
 const ModalNew = (props) => {
   const { setNewModalOpen, setTodoData } = props;
