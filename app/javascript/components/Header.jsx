@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '../stylesheets/header.css';
 import Introduction from './Introduction';
 // import Login from './Login';
-// import Signup from './Signup';
+import Signup from './Signup';
 
 const Header = () => {
   const [introOpen, setIntroOpen] = useState(false);
@@ -17,7 +17,7 @@ const Header = () => {
       </div>
       {introOpen && <Introduction setIntroOpen={setIntroOpen} />}
       {/* {loginOpen && <Login setLoginOpen={setLoginOpen} />} */}
-      {/* {signupOpen && <Signup setSignupOpen={setSignupOpen} />} */}
+      {signupOpen && <Signup setSignupOpen={setSignupOpen} />}
     </header>
   );
 };
