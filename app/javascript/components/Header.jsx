@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../stylesheets/header.css';
 import Introduction from './Introduction';
-// import Login from './Login';
+import Login from './Login';
 import Signup from './Signup';
 
 const Header = () => {
@@ -16,7 +16,7 @@ const Header = () => {
         <button className='signup-btn' onClick={() => setSignupOpen(true)}>新規登録</button>
       </div>
       {introOpen && <Introduction setIntroOpen={setIntroOpen} />}
-      {/* {loginOpen && <Login setLoginOpen={setLoginOpen} />} */}
+      {loginOpen && <Login setLoginOpen={setLoginOpen} />}
       {signupOpen && <Signup setSignupOpen={setSignupOpen} />}
     </header>
   );
