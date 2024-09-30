@@ -18,5 +18,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password_confirmation: "password" } }
     end
     assert_response :created
+    assert is_logged_in?
   end
 end
