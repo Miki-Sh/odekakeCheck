@@ -20,7 +20,6 @@ const Signup = (props) => {
       const res = await axios.post('/users', { user: { email: email, password: password, password_confirmation: passwordConfirmation }});
       setUserData(res.data);
       setIsLoggedIn(true);
-      console.log(res.data);
     } catch (e) {
       if (e.response && e.response.data && e.response.data.errors) {
         setErrorMessage(e.response.data.errors.join(", "));

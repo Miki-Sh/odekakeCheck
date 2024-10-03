@@ -12,10 +12,7 @@ const Header = () => {
   useEffect(() => {
     const checkLoginStatus = () => {
       const tokenCookie = Cookies.get('token');
-      console.log(session);
-      if (tokenCookie) {
-        setIsLoggedIn(true);
-      }
+      if (tokenCookie) setIsLoggedIn(true);
     };
     checkLoginStatus();
   },[]);
@@ -37,7 +34,6 @@ const Header = () => {
 
   return(
     <header>
-      { (!isLoggedIn) && <p>ログインして</p>}
       <p className="header-logo">おでかけチェック</p>
       <p>{errorMessage}</p>
       <div className='header-menu'>

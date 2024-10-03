@@ -21,10 +21,9 @@ const Login = (props) => {
     }
     try {
       const res = await axios.post('/login', { session: { email: email, password: password, remember_me: remSwitch }});
-      Cookies.set('token', res.data.remember_digest, { expires: 7 });
+      Cookies.set('token', res.data.remember_digest, { expires: 14 });
       setUserData(res.data);
       setIsLoggedIn(true);
-      console.log(res.data);
     } catch (e) {
       if (e.response && e.response.data) {
         setErrorMessage(e.response.data);
