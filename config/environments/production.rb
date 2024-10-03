@@ -86,7 +86,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # DNS リバインディング保護と他の `Host` ヘッダー攻撃を有効にします。
-  Rails.application.config.hosts << "https://odekakechietsuku.onrender.com/"
+  Rails.application.config.hosts << "odekakechietsuku.onrender.com/"
   #   "example.com",     # example.com からのリクエストを許可
   #   /.*\.example\.com/ # `www.example.com` のようなサブドメインからのリクエストを許可
   
