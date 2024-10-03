@@ -49,7 +49,7 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # すべてのアプリへのアクセスを SSL 経由に強制し、Strict-Transport-Security を使用し、セキュアクッキーを使用します。
-  # config.force_ssl = true
+  config.force_ssl = false
 
   # デフォルトで STDOUT にログを出力
   config.logger = ActiveSupport::Logger.new(STDOUT)
