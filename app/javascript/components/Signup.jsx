@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import '../stylesheets/Modal.css';
 
 const Signup = (props) => {
-  const setSignupOpen = props.setSignupOpen;
+  const { setSignupOpen, setUserData, setIsLoggedIn } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const signup = async (e) => {
     e.preventDefault();
@@ -15,11 +17,13 @@ const Signup = (props) => {
       return;
     }
     try {
-      const res = await axios.post('/api/signup', { email: email, password: password, password_confirmation: passwordConfirmation });
-      setSignupOpen(false);
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.errors) {
-        setErrorMessage(error.response.data.errors.join(", "));
+      const res = await axios.post('/users', { user: { email: email, password: password, password_confirmation: passwordConfirmation }});
+      setUserData(res.data);
+      setIsLoggedIn(true);
+      console.log(res.data);
+    } catch (e) {
+      if (e.response && e.response.data && e.response.data.errors) {
+        setErrorMessage(e.response.data.errors.join(", "));
       } else {
         setErrorMessage("登録に失敗しました。もう一度お試しください。");
       }
@@ -31,6 +35,7 @@ const Signup = (props) => {
       <div className="container">
         <div className="item-form-wrapper" onClick={(e) => e.stopPropagation()}>
           <h1>メールアドレスとパスワードを登録しておでかけチェックをはじめましょう！</h1>
+          <p>{errorMessage}</p>
           <form onSubmit={signup}>
             <label htmlFor="email">メールアドレス</label>
             <input type="text" className="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />

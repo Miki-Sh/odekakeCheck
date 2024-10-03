@@ -49,17 +49,17 @@
 
 .item-form-wrapper input[type="submit"] {
   display: block;
-  width: 170px;
+  /* width: 170px; */
   height: 60px;
   margin-top: 24px;
   margin-left: auto;
-  border-radius: 30px;
   font-size: 28px;
   background-color: #2488f7;
   color: #FEFEFE;
   cursor: pointer;
   outline: none;
   border: 3px solid #2488f7;
+  border-radius: 30px;
 }
 
 .item-form-wrapper input[type="submit"]:hover {
@@ -87,4 +87,8 @@
   color: #2cbb95;
   background: #FEFEFE;
   transition: all 0.3s ease;
+}
+
+.remember {
+  font-size: medium;
 }

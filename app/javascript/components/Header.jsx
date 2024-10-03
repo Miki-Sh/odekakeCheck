@@ -1,23 +1,49 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import axios from 'axios';
 import '../stylesheets/header.css';
 import Introduction from './Introduction';
-import Login from './Login';
-import Signup from './Signup';
 
 const Header = () => {
-  const [introOpen, setIntroOpen] = useState(false);
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [signupOpen, setSignupOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
+  
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const tokenCookie = Cookies.get('token');
+      console.log(session);
+      if (tokenCookie) {
+        setIsLoggedIn(true);
+      }
+    };
+    checkLoginStatus();
+  },[]);
+
+  const logout = async () => {
+    try {
+      const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      const res = await axios.delete('/logout', { headers: {'X-CSRF-Token': token}});
+      Cookies.remove('token');
+      setIsLoggedIn(false);
+    } catch (e) {
+      if (e.response && e.response.data) {
+        setErrorMessage(e.response.data);
+      } else {
+        setErrorMessage("ログアウトに失敗しました。");
+      }
+    }
+  };
+
   return(
     <header>
-      <a className="header-logo" onClick={() => setIntroOpen(true)}>おでかけチェック</a>
+      { (!isLoggedIn) && <p>ログインして</p>}
+      <p className="header-logo">おでかけチェック</p>
+      <p>{errorMessage}</p>
       <div className='header-menu'>
-        <button className='login-btn' onClick={() => setLoginOpen(true)}>ログイン</button>
-        <button className='signup-btn' onClick={() => setSignupOpen(true)}>新規登録</button>
+        <button className='logout-btn' onClick={() => logout()}>ログアウト</button>
       </div>
-      {introOpen && <Introduction setIntroOpen={setIntroOpen} />}
-      {loginOpen && <Login setLoginOpen={setLoginOpen} />}
-      {signupOpen && <Signup setSignupOpen={setSignupOpen} />}
+      { !isLoggedIn && <Introduction userData={userData} setUserData={setUserData} setIsLoggedIn={setIsLoggedIn} />}
     </header>
   );
 };

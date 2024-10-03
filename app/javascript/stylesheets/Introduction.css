@@ -50,7 +50,48 @@
   margin-bottom: 40px;
 }
 
-.index-button {
+.login-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  background: #2cbb95;
+  border: 3px solid #2cbb95;
+  border-radius: 15px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #FEFEFE;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #FEFEFE;
+  color: #2cbb95;
+  transition: all 0.3s ease;
+}
+
+.signup-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  background: #2488f7;
+  border: 3px solid #2488f7;
+  border-radius: 15px;
+  font-size: 28px;
+  font-weight: 550;
+  color: #FEFEFE;
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  background-color: #FEFEFE;
+  color: #2488f7;
+  transition: all 0.3s ease;
+}
+
+
+/* .index-button {
   color: #FEFEFE;
   background: #2488f7;
   font-size: 30px;
@@ -69,4 +110,4 @@
   background:  #FEFEFE;
   border: 3px solid #2488f7;
   transition: all 0.3s ease;
-}
+} */

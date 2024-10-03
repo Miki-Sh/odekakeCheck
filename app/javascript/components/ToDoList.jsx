@@ -10,7 +10,6 @@ const ToDoList = () => {
   const [newModalOpen, setNewModalOpen] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
 
-  // APIからデータを取得する
   useEffect(() => {
     const fetchTodos = async () => {
       try {
