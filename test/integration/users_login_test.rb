@@ -19,11 +19,11 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test "有効な情報でログインして、ログアウトする" do
     post login_path, params: { session: { email: @user.email, password: "password" } }
+    assert_response :ok
     assert is_logged_in?
     delete logout_path
-    assert_response :see_other
+    assert_response :no_content
     assert_not is_logged_in?
-    delete logout_path
   end
 
   test "remember_tokenキーがある時のログイン" do
@@ -37,6 +37,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     delete logout_path
     # cookieを削除してログイン
     log_in_as(@user, remember_me: '0')
-    assert_empty cookies[:remember_token]
+    assert_empty cookies['remember_token']
   end
 end

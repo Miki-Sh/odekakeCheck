@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
   # /up にヘルスチェックのルートを公開し、アプリが例外なく起動している場合は200を返し、それ以外の場合は500を返します。
   # ロードバランサーやアップタイムモニターがアプリの稼働状況を確認するために使用します。
   get "up" => "rails/health#show", as: :rails_health_check

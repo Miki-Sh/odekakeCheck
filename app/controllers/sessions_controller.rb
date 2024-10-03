@@ -5,9 +5,11 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
+      # forwarding_url = session[:forwarding_url]
       reset_session      # セッション固定攻撃への対策（ログインの直前に必ずこれを書くこと）
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       log_in @user
+      render json: @user, status: :ok
     else
       render json: { errors: "メールアドレスとパスワードの組み合わせが間違っています" }, status: :unprocessable_entity
     end
@@ -15,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    redirect_to root_url, status: :see_other
+    head :no_content
   end
 end
