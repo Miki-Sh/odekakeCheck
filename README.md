@@ -9,7 +9,8 @@
 
 ## アプリURL
 
-[https://odekake-ls.vercel.app/](https://odekake-ls.vercel.app/)
+
+**[おでかけチェック（ログインなしVer）](https://github.com/Miki-Sh/odekakeLS)はこちら**
 
 ## 目次
 
