@@ -63,7 +63,7 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       unless @user == current_user
-        render json: { error: '自分以外のユーザーの編集はできません' }, status: :forbidden
+        render json: { error: '自分以外のユーザーの編集はできません' }, status: :forbidden unless current_user?(@user)
       end
     end
 end

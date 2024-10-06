@@ -17,4 +17,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :unauthorized
   end
+
+  test "違うユーザーのeditアクションは実行できない" do
+    log_in_as(@other_user)
+    get edit_user_path(@user)
+    assert_response :forbidden
+  end
+
+  test "違うユーザーのupdateアクションは実行できない" do
+    log_in_as(@other_user)
+    patch user_path(@user), params: { user: { email: @user.email } }
+    assert_response :forbidden
+  end
 end
