@@ -52,10 +52,7 @@ https://odekakechietsuku.onrender.com
 ## 本番環境
 
 - [PostgreSQL](https://www.postgresql.org) (14.9)
-- [AWS ECS](https://aws.amazon.com/ecs/)
-- [AWS RDS (PostgreSQL)](https://aws.amazon.com/rds/postgresql/)
-- [S3 with CloudFront](https://aws.amazon.com/cloudfront/)
-
+- https://render.com/
 
 ## フロントエンド使用技術
 
